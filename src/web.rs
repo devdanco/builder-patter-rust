@@ -5,7 +5,7 @@ use crate::prelude::*;
 #[derive(Debug)]
 pub struct Request {
     url: String,
-    method: String, // in general this should be boolean
+    method: String,
     headers: Vec<(String, String)>,
     body: Option<String>,
 }
