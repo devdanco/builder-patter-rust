@@ -7,7 +7,7 @@ pub struct Request {
     url: String,
     method: String, // in general this should be boolean
     headers: Vec<(String, String)>,
-    body: Option<String>
+    body: Option<String>,
 }
 
 #[derive(Default, Clone)]
@@ -33,7 +33,7 @@ pub struct RequestBuilder<U, M, S> {
     method: M, // in general this should be boolean
     headers: Vec<(String, String)>,
     body: Option<String>,
-    marker_seal: PhantomData<S>
+    marker_seal: PhantomData<S>,
 }
 
 impl RequestBuilder<NoUrl, NoMethod, NotSealed> {
@@ -56,7 +56,6 @@ impl<U, M> RequestBuilder<U, M, NotSealed> {
 
 impl<S> RequestBuilder<Url, Method, S> {
     pub fn build(self) -> Result<Request> {
-
         Ok(Request {
             url: self.url.0,
             method: self.method.0,
@@ -73,7 +72,7 @@ impl<U, M> RequestBuilder<U, M, NotSealed> {
             method: self.method,
             headers: self.headers,
             body: self.body,
-            marker_seal: PhantomData
+            marker_seal: PhantomData,
         }
     }
 
@@ -83,7 +82,7 @@ impl<U, M> RequestBuilder<U, M, NotSealed> {
             method: Method(method.into()),
             headers: self.headers,
             body: self.body,
-            marker_seal: PhantomData
+            marker_seal: PhantomData,
         }
     }
 
@@ -92,9 +91,8 @@ impl<U, M> RequestBuilder<U, M, NotSealed> {
         self
     }
 
-    pub fn header(mut self, name: impl Into<String>, value: impl Into<String>) ->  Self {
+    pub fn header(mut self, name: impl Into<String>, value: impl Into<String>) -> Self {
         self.headers.push((name.into(), value.into()));
         self
     }
-
 }

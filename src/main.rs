@@ -1,14 +1,11 @@
 #![allow(unused)]
-use web::RequestBuilder;
 use prelude::*;
-mod web;
+use web::RequestBuilder;
 mod error;
 mod prelude;
+mod web;
 
 fn main() -> Result<()> {
-
-
-
     let request = RequestBuilder::new()
         .url("https://example.com")
         .method("GET")
