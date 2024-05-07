@@ -1,7 +1,7 @@
 use std::marker::PhantomData;
-// very simple Request struct only for educational purposes
 use crate::prelude::*;
 
+// very simple Request struct only for educational purposes
 #[derive(Debug)]
 pub struct Request {
     url: String,
